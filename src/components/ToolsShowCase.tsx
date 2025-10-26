@@ -14,6 +14,7 @@ interface Tool {
   icon: any;
   accentColor: string;
   image: string;
+  stat?: string;
 }
 
 // iPhone Mockup Component
@@ -71,68 +72,55 @@ function IPhoneMockup({ tool }: { tool: Tool }) {
 
 const TOOLS: Tool[] = [
   {
-    id: 'research',
-    label: 'RESEARCH',
-    eyebrow: 'Market Intelligence',
-    headline: 'Data-driven market validation',
-    description: 'We identify high-potential products through rigorous market research, competitive analysis, and customer insights. Launch with confidence knowing your product has validated demand.',
+    id: "research",
+    label: "RESEARCH",
+    eyebrow: "MARKET INTELLIGENCE",
+    headline: "Understand WHERE the money is—not just IF there's demand",
+    description: "Most brands fail because they build products nobody wants to buy. We don't launch until we've validated that customers are already spending money on the problem we're solving—we just build a better solution.",
     benefits: [
-      'Comprehensive market opportunity analysis',
-      'Competitive landscape mapping',
-      'Customer demand validation',
-      'Product-market fit testing'
+      "Market Size Analysis - DACH health market opportunity scoring across 20+ categories",
+      "Competitor Research - Pricing strategies, positioning gaps, and market saturation analysis",
+      "Demand Validation - Search volume, native ad spend estimates, and customer intent signals",
+      "Audience Psychology - Pain points, buying triggers, and decision-making frameworks"
     ],
     icon: Target,
-    accentColor: 'from-orange-500 to-red-500',
-    image: '/mockups/1.png'
+    accentColor: "from-orange-500 to-red-500",
+    image: "/mockups/1.png",
+    stat: "📊 12+ market opportunities analyzed in Q1 2025"
   },
   {
-    id: 'infrastructure',
-    label: 'INFRASTRUCTURE',
-    eyebrow: 'Battle-Tested Systems',
-    headline: 'Enterprise eCommerce infrastructure',
-    description: 'Leverage our proven tech stack and operational systems. From Shopify optimization to fulfillment automation - we handle the complexity so you can focus on growth.',
+    id: "conversion",
+    label: "CONVERSION",
+    eyebrow: "DIRECT RESPONSE",
+    headline: "Every element engineered to drive action—not just look pretty",
+    description: "Beautiful design doesn't pay the bills—conversion does. Every headline, every image, every button placement is tested and optimized using Direct Response principles that have generated hundreds of millions in D2C sales.",
     benefits: [
-      'Optimized Shopify stores with conversion-focused design',
-      'Automated fulfillment & logistics integration',
-      'Payment processing & fraud prevention',
-      'Customer service automation & CRM'
-    ],
-    icon: Building2,
-    accentColor: 'from-red-500 to-amber-500',
-    image: '/mockups/2.png'
-  },
-  {
-    id: 'marketing',
-    label: 'MARKETING',
-    eyebrow: 'Direct Response',
-    headline: 'Performance marketing that scales',
-    description: 'Our marketing framework is built for scale. We optimize every touchpoint from ad creative to landing pages, turning cold traffic into loyal customers at industry-leading ROAS.',
-    benefits: [
-      'Multi-channel acquisition (Meta, Google, TikTok, Native)',
-      'Conversion rate optimization & A/B testing',
-      'Email & SMS automation workflows',
-      'Influencer & affiliate partnership management'
+      "Sales Page Architecture - Headline testing, benefit stacking, objection handling, and CTA optimization",
+      "Checkout Flow Design - Multi-step vs single-page testing, trust signals, and friction reduction",
+      "Upsell Sequences - Post-purchase offers, AOV maximization, and bundle strategies",
+      "Email Automation - Cart abandonment, welcome series, and retention campaigns"
     ],
     icon: Rocket,
-    accentColor: 'from-amber-500 to-orange-500',
-    image: '/mockups/3.png'
+    accentColor: "from-amber-500 to-orange-500",
+    image: "/mockups/2.png",
+    stat: "🎯 Target: 3.5%+ checkout conversion rate before scaling"
   },
   {
-    id: 'analytics',
-    label: 'ANALYTICS',
-    eyebrow: '24/7 Monitoring',
-    headline: 'Real-time insights & analytics',
-    description: 'Track every metric that matters. Our analytics dashboard gives you complete visibility into performance, from CAC to LTV, empowering data-driven decisions at every stage.',
+    id: "infrastructure",
+    label: "INFRASTRUCTURE",
+    eyebrow: "BUILT TO SCALE",
+    headline: "The time to build infrastructure is before you need it",
+    description: "Most brands scramble when they hit scale—payment processors get nervous, fulfillment breaks down, compliance becomes a nightmare. We build like we're already doing $10M/year, so when growth comes, we're ready.",
     benefits: [
-      'Real-time P&L tracking across all channels',
-      'Customer acquisition cost & LTV monitoring',
-      'Cohort analysis & retention metrics',
-      'Predictive analytics & forecasting'
+      "Payment Processing - Multi-processor setup, chargeback management, and high-risk mitigation strategies",
+      "Fulfillment & Logistics - 3PL partnerships, international shipping, and inventory management systems",
+      "Compliance Framework - DSGVO, health claims review, advertising compliance, and payment processor requirements",
+      "Customer Service - Ticketing systems, refund policies, and satisfaction monitoring across all brands"
     ],
-    icon: TrendingUp,
-    accentColor: 'from-orange-600 to-red-600',
-    image: '/mockups/4.png'
+    icon: Building2,
+    accentColor: "from-red-500 to-amber-500",
+    image: "/mockups/3.png",
+    stat: "⚡ Infrastructure capacity: Built for 8-figure annual revenue"
   }
 ];
 
@@ -179,10 +167,10 @@ export default function ToolsShowCase() {
             Our Infrastructure
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            The complete ecosystem for D2C success
+            The Infrastructure Behind Every Successful Brand Launch
           </h2>
           <p className="text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto">
-            Everything you need to launch, scale, and dominate - all in one proven system
+            No guesswork, no shortcuts—just proven systems that we use to validate, build, and scale every brand in our portfolio.
           </p>
         </div>
 
@@ -260,6 +248,13 @@ export default function ToolsShowCase() {
                       </motion.div>
                     ))}
                   </div>
+
+                  {/* Bottom Stat */}
+                  {activeToolData.stat && (
+                    <div className="mt-6 pt-6 border-t border-white/10">
+                      <p className="text-sm text-gray-400">{activeToolData.stat}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

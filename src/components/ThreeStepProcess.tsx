@@ -68,13 +68,13 @@ function IPhoneMockup({ mockup, isActive, position }: {
             {/* Content */}
             <div className="absolute top-0 left-0 right-0 p-8 text-white">
               <Badge variant="gradient" className="mb-3">
-                {mockup.badge}
+                {mockup.mockupBadge || mockup.badge}
               </Badge>
               <h3 className="text-2xl font-bold mb-2 drop-shadow-lg">
-                {mockup.title}
+                {mockup.mockupTitle || mockup.title}
               </h3>
               <p className="text-base opacity-90 drop-shadow">
-                {mockup.subtitle}
+                {mockup.mockupSubtitle || mockup.subtitle}
               </p>
             </div>
           </div>
@@ -92,32 +92,62 @@ export default function ThreeStepProcess() {
     {
       id: 0,
       badge: "Step 1",
-      title: "Validate & Launch",
+      title: "Validate & Research",
       subtitle: "Market research meets rapid execution",
-      description: "We identify high-potential products through rigorous market analysis and customer research. Launch with minimal risk using our proven testing frameworks and infrastructure.",
+      description: "Market demand analysis, competitive landscape mapping, and audience psychology research—we only move forward when the numbers justify the investment.",
       image: "/mockups/1.png",
       icon: Target,
-      result: "Product-Market Fit"
+      result: "Data-Backed Go/No-Go Decision",
+      features: [
+        "Market size analysis & demand validation",
+        "Competitor positioning & pricing research",
+        "Target audience profiling & pain point mapping",
+        "Product-market fit validation through data"
+      ],
+      // iPhone Mockup specific content
+      mockupBadge: "Research Phase",
+      mockupTitle: "127,000 monthly searches",
+      mockupSubtitle: '"Joint pain relief" DACH region - validated demand'
     },
     {
       id: 1,
       badge: "Step 2",
-      title: "Optimize & Scale",
-      subtitle: "Data-driven growth at scale",
-      description: "Leverage our advanced marketing infrastructure and performance analytics to achieve profitable growth. We optimize every metric from CAC to LTV.",
+      title: "Build & Launch",
+      subtitle: "From concept to market-ready brand",
+      description: "Brand development, product sourcing, funnel creation, and compliance setup—every touchpoint optimized for conversion before we go live.",
       image: "/mockups/2.png",
       icon: Rocket,
-      result: "Profitable Scaling"
+      result: "Launch-Ready D2C Brand",
+      features: [
+        "Product sourcing & supplier vetting",
+        "Brand identity & Direct Response positioning",
+        "Sales funnel & checkout optimization",
+        "Payment processing & compliance clearance"
+      ],
+      // iPhone Mockup specific content
+      mockupBadge: "Launch Phase",
+      mockupTitle: "Brand Launch: Ready",
+      mockupSubtitle: "Product sourced, funnel live, compliance approved"
     },
     {
       id: 2,
       badge: "Step 3",
-      title: "Dominate & Expand",
-      subtitle: "Build a market-leading brand",
-      description: "Create sustainable competitive advantages through brand building, multi-channel expansion, and strategic partnerships. Go from startup to category leader.",
+      title: "Scale & Optimize",
+      subtitle: "Profitable growth through performance marketing",
+      description: "Media buying across native, paid social, and search—combined with email automation and retention flows that maximize LTV and profitability.",
       image: "/mockups/3.png",
       icon: Trophy,
-      result: "Market Leadership"
+      result: "Profitable, Scalable Growth",
+      features: [
+        "Native advertising (Taboola, Outbrain, MGID)",
+        "Paid social & search campaigns (Meta, Google)",
+        "Email marketing & customer retention automation",
+        "Continuous funnel testing & AOV optimization"
+      ],
+      // iPhone Mockup specific content
+      mockupBadge: "Growth Phase",
+      mockupTitle: "Day 14: Break-even",
+      mockupSubtitle: "First campaign profitability milestone reached"
     }
   ];
 
@@ -176,13 +206,13 @@ export default function ThreeStepProcess() {
           </Badge>
 
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            <span className="text-white">From Concept to Category Leader in</span>{' '}
-            <GradientText gradient="mixed">3 Strategic Steps</GradientText>
+            <span className="text-white">From Zero to Market Leader in</span>{' '}
+            <GradientText gradient="mixed">3 Strategic Phases</GradientText>
           </h2>
 
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Stop guessing. Follow our battle-tested framework that has helped 15+ brands
-            go from zero to multi-million dollar businesses.
+          We don't launch brands on gut feeling. Every brand in our portfolio goes through rigorous validation, 
+          systematic buildout, and performance-driven scaling - before a single dollar is spent on ads.
           </p>
         </motion.div>
 
@@ -219,18 +249,12 @@ export default function ThreeStepProcess() {
 
             {/* Features List */}
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span className="text-gray-300">Proven infrastructure & systems</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span className="text-gray-300">Expert team at your disposal</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <span className="text-gray-300">Full transparency & partnership</span>
-              </div>
+              {activeStep.features?.map((feature, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-300">{feature}</span>
+                </div>
+              ))}
             </div>
 
             {/* Result Badge */}
@@ -333,7 +357,7 @@ export default function ThreeStepProcess() {
           className="text-center mt-16"
         >
           <Button variant="gradient" size="lg" className="group">
-            Start Your Brand Journey
+          This is how we build brands that win
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
 
