@@ -268,7 +268,7 @@ function TestimonialCarousel() {
 // Main Section Component
 export default function SocialProofSection() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
+    <section id="social-proof" className="relative py-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
       {/* Background with Animated Blobs */}
       <div className="absolute inset-0 bg-black">
         {/* Gradient Blob 1 - Orange */}

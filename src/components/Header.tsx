@@ -27,6 +27,7 @@ const Header: React.FC = () => {
         {/* Navigation */}
         <nav className={styles.nav}>
           <button onClick={() => scrollToSection('home')} className={styles.navLink}>Home</button>
+          <button onClick={() => scrollToSection('social-proof')} className={styles.navLink}>Social Proof</button>
           <button onClick={() => scrollToSection('services')} className={styles.navLink}>Services</button>
           <button onClick={() => scrollToSection('process')} className={styles.navLink}>Process</button>
           <button onClick={() => scrollToSection('contact')} className={styles.navLink}>Contact</button>
