@@ -166,8 +166,8 @@ function TestimonialCarousel() {
     {
       id: 1,
       name: "Sarah Chen",
-      role: "Co-Founder, WellnessX",
-      quote: "AXE Global took our wellness concept from idea to $5M ARR in 18 months. Their infrastructure and marketing expertise is unmatched.",
+      role: "Li Zhang, CEO & Performance Marketing Lead",
+      quote: "I've spent a decade scaling health brands through native advertising and Direct Response. AXE Global is the logical next step — building brands where every decision is driven by performance, and every win compounds into the next launch.",
       rating: 5,
       image: "/socialproof/1.png",
       achievement: "$5M ARR"
@@ -175,8 +175,8 @@ function TestimonialCarousel() {
     {
       id: 2,
       name: "Michael Torres",
-      role: "CEO, FitCore Labs",
-      quote: "Working with AXE Global feels like having an entire team of Fortune 500 experts. They handle everything from product to scaling.",
+      role: "Marcus Weber, CTO & Technical Lead (Berlin)",
+      quote: "The best part about building our own infrastructure? We can move fast without compromise. Every system we build today becomes the foundation for the next brand — that's the power of a true portfolio approach.",
       rating: 5,
       image: "/socialproof/2.png",
       achievement: "15x Growth"
@@ -184,8 +184,8 @@ function TestimonialCarousel() {
     {
       id: 3,
       name: "Emma Richards",
-      role: "Founder, PureGlow",
-      quote: "From 0 to profitable in 6 months. Their Direct Response marketing framework is proven and repeatable.",
+      role: "Sarah Mitchell, Head of Copy & Conversion (London)",
+      quote: "I've written sales copy that's generated over €50M in revenue. At AXE Global, I'm applying that same framework to build brands that convert from day one — it's copywriting with skin in the game.",
       rating: 5,
       image: "/socialproof/3.png",
       achievement: "Profitable in 6mo"
@@ -193,8 +193,8 @@ function TestimonialCarousel() {
     {
       id: 4,
       name: "David Kim",
-      role: "Brand Director, HealthFirst",
-      quote: "The eCommerce infrastructure they built allows us to scale without breaking. We went from $100k to $2M monthly.",
+      role: "David Chen, Head of Analytics & Growth (Singapore)",
+      quote: "Data tells you what's working before your gut does. We're building AXE Global with analytics at the core — so every launch is smarter than the last, and every insight feeds the next brand.",
       rating: 5,
       image: "/socialproof/4.png",
       achievement: "$2M Monthly"
@@ -202,8 +202,8 @@ function TestimonialCarousel() {
     {
       id: 5,
       name: "Lisa Martinez",
-      role: "CMO, VitalPro",
-      quote: "Best decision was partnering with AXE Global. Their data-driven approach to brand building is revolutionary.",
+      role: "Emma Richter, Head of Compliance & Operations (Vienna)",
+      quote: "Compliance isn't a roadblock — it's a competitive advantage. When you build it right from the start, you can scale without looking over your shoulder. That's how we're building every brand at AXE Global.",
       rating: 5,
       image: "/socialproof/5.png",
       achievement: "300% ROAS"
@@ -211,8 +211,8 @@ function TestimonialCarousel() {
     {
       id: 6,
       name: "James Wilson",
-      role: "Founder, NutriBoost",
-      quote: "They don't just launch brands, they build empires. Our brand is now in 15 countries thanks to their expertise.",
+      role: "Head of Product Development (Hong Kong)",
+      quote: "Great products don't need tricks to sell — they need the right positioning and the right audience. I'm focused on finding products that solve real problems, because that's where sustainable D2C brands are built.",
       rating: 5,
       image: "/socialproof/6.png",
       achievement: "15 Countries"
@@ -330,7 +330,7 @@ export default function SocialProofSection() {
           </h2>
 
           <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto px-4">
-            See what's happening right now in our ecosystem
+          See what's happening across our brands right now
           </p>
         </motion.div>
 
