@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, Target, Rocket, TrendingUp, Building2 } from 'lucide-react';
+import { CheckCircle, Target, Rocket, Building2 } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Badge } from './ui/Badge';
 import { Button } from './ui/Button';
 
@@ -24,14 +25,14 @@ function IPhoneMockup({ tool }: { tool: Tool }) {
       <div className="relative w-full max-w-[280px]">
         <div className="relative group">
           <div
-            className="relative bg-white/10 dark:bg-black/10 backdrop-blur-xl rounded-[2.5rem] shadow-2xl"
+            className="relative bg-white/10 dark:bg-black/10 backdrop-blur-xl lg:rounded-[2.5rem] rounded-t-[2.5rem] shadow-2xl"
             style={{
               background: 'linear-gradient(90deg, rgba(255, 107, 53, 0.2), rgba(239, 68, 68, 0.2)) border-box',
               border: '1.5px solid transparent',
             }}
           >
             <div
-              className="relative rounded-[2.5rem] overflow-hidden"
+              className="relative lg:rounded-[2.5rem] rounded-t-[2.5rem] overflow-hidden"
               style={{
                 aspectRatio: '390/844',
                 backgroundImage: `url(${tool.image})`,
@@ -107,7 +108,7 @@ const TOOLS: Tool[] = [
   },
   {
     id: "infrastructure",
-    label: "INFRASTRUCTURE",
+    label: "STRUCTURE",
     eyebrow: "BUILT TO SCALE",
     headline: "The time to build infrastructure is before you need it",
     description: "Most brands scramble when they hit scale—payment processors get nervous, fulfillment breaks down, compliance becomes a nightmare. We build like we're already doing $10M/year, so when growth comes, we're ready.",
@@ -125,8 +126,97 @@ const TOOLS: Tool[] = [
 ];
 
 export default function ToolsShowCase() {
-  const [activeTab, setActiveTab] = useState<string>('research');
+  const [activeTab, setActiveTab] = useState<string>("research");
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const activeToolData = TOOLS.find(tool => tool.id === activeTab)!;
+
+  // Embla Carousel for Content (Mobile)
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+    skipSnaps: false,
+    dragFree: false,
+    containScroll: false,
+    slidesToScroll: 1,
+    startIndex: TOOLS.length,
+  });
+
+  // Embla Carousel for Tab Headers (Mobile)
+  const [emblaTabRef, emblaTabApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+    skipSnaps: false,
+    dragFree: false,
+    containScroll: false,
+    slidesToScroll: 1,
+    startIndex: TOOLS.length,
+  });
+
+  const handleTabClick = (toolId: string, index?: number) => {
+    setActiveTab(toolId);
+    if (index !== undefined) {
+      emblaApi?.scrollTo(index);
+      emblaTabApi?.scrollTo(index);
+    }
+  };
+
+  // Smart Tab Click Handler for Mobile
+  const handleSmartTabClick = useCallback((clickedGlobalIndex: number) => {
+    if (!emblaApi || !emblaTabApi) return;
+
+    const currentGlobalIndex = emblaApi.selectedScrollSnap();
+    const clickedToolIndex = clickedGlobalIndex % TOOLS.length;
+    const currentToolIndex = currentGlobalIndex % TOOLS.length;
+
+    if (clickedToolIndex === currentToolIndex) return;
+
+    let targetIndex: number;
+
+    if (clickedGlobalIndex > currentGlobalIndex) {
+      targetIndex = clickedGlobalIndex;
+    } else if (clickedGlobalIndex < currentGlobalIndex) {
+      const distance = currentGlobalIndex - clickedGlobalIndex;
+
+      if (distance >= TOOLS.length) {
+        targetIndex = currentGlobalIndex + ((TOOLS.length - currentToolIndex) + clickedToolIndex);
+      } else {
+        targetIndex = clickedGlobalIndex;
+      }
+    } else {
+      targetIndex = clickedGlobalIndex;
+    }
+
+    emblaApi.scrollTo(targetIndex);
+    emblaTabApi.scrollTo(targetIndex);
+  }, [emblaApi, emblaTabApi]);
+
+  // Sync carousel scroll with active tab
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    const globalIndex = emblaApi.selectedScrollSnap();
+    const normalizedIndex = globalIndex % TOOLS.length;
+
+    setSelectedIndex(normalizedIndex);
+    setActiveTab(TOOLS[normalizedIndex].id);
+    emblaTabApi?.scrollTo(globalIndex);
+  }, [emblaApi, emblaTabApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+
+    const onResize = () => {
+      emblaApi.reInit();
+      emblaTabApi?.reInit();
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      emblaApi.off("select", onSelect);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [emblaApi, emblaTabApi, onSelect]);
 
   return (
     <section id="services" className="relative py-20 px-6 lg:px-12 overflow-hidden">
@@ -174,8 +264,8 @@ export default function ToolsShowCase() {
           </p>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Tab Navigation - Desktop Only */}
+        <div className="hidden lg:flex flex-wrap justify-center gap-3 mb-12">
           {TOOLS.map((tool) => (
             <button
               key={tool.id}
@@ -191,8 +281,9 @@ export default function ToolsShowCase() {
           ))}
         </div>
 
-        {/* Content Area */}
-        <AnimatePresence mode="wait">
+        {/* Desktop: Content Area */}
+        <div className="hidden lg:block">
+          <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 20 }}
@@ -200,7 +291,7 @@ export default function ToolsShowCase() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 lg:p-12">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 lg:p-12">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left: iPhone Mockup */}
                 <div className="flex justify-center lg:justify-start">
@@ -260,6 +351,105 @@ export default function ToolsShowCase() {
             </div>
           </motion.div>
         </AnimatePresence>
+        </div>
+
+        {/* Mobile: Carousel System */}
+        <div className="block lg:hidden">
+          {/* Tab Navigation Carousel */}
+          <div className="mb-8">
+            <div ref={emblaTabRef}>
+              <div className="flex">
+                {[...TOOLS, ...TOOLS, ...TOOLS].map((tool, globalIndex) => {
+                  const index = globalIndex % TOOLS.length;
+                  const isActive = selectedIndex === index;
+
+                  return (
+                    <div key={`tab-${tool.id}-${globalIndex}`} className="flex-[0_0_40%] min-w-0 px-2 flex justify-center">
+                      <motion.div
+                        animate={{
+                          scale: isActive ? 1.15 : 0.85,
+                          opacity: isActive ? 1 : 0.6,
+                        }}
+                        transition={{
+                          duration: 0.3,
+                          ease: [0.4, 0, 0.2, 1]
+                        }}
+                      >
+                        <button
+                          onClick={() => handleSmartTabClick(globalIndex)}
+                          className={`px-6 py-3 rounded-full font-bold whitespace-nowrap ${
+                            isActive
+                              ? "bg-gradient-to-r from-orange-600 to-red-600 text-white"
+                              : "bg-white/5 text-gray-400"
+                          }`}
+                        >
+                          {tool.label}
+                        </button>
+                      </motion.div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Content Carousel */}
+          <div ref={emblaRef}>
+            <div className="flex touch-pan-y">
+              {[...TOOLS, ...TOOLS, ...TOOLS].map((tool, globalIndex) => {
+                const index = globalIndex % TOOLS.length;
+                const isActive = selectedIndex === index;
+
+                return (
+                  <div key={`card-${tool.id}-${globalIndex}`} className="flex-[0_0_85%] min-w-0 px-1">
+                    <motion.div
+                      animate={{
+                        scale: isActive ? 1 : 0.92,
+                        opacity: isActive ? 1 : 0.85,
+                      }}
+                      transition={{
+                        duration: 0.4,
+                        ease: [0.4, 0, 0.2, 1]
+                      }}
+                      style={{
+                        willChange: "transform, filter, opacity"
+                      }}
+                    >
+                      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] overflow-hidden">
+                        {/* iPhone Mockup Area - Rounded top only */}
+                        <div className="relative w-full aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-t-[2.5rem]">
+                          <IPhoneMockup tool={tool} />
+                        </div>
+
+                        {/* Content Area */}
+                        <div className="px-5 py-5">
+                          <p className="text-xs text-orange-400 uppercase tracking-wider mb-2">
+                            {tool.eyebrow}
+                          </p>
+                          <h3 className="text-base font-bold text-white mb-3 line-clamp-2 leading-tight">
+                            {tool.headline}
+                          </h3>
+
+                          {/* Top 3 Benefits */}
+                          <div className="space-y-1.5 mb-4">
+                            {tool.benefits.slice(0, 3).map((benefit, idx) => (
+                              <div key={idx} className="flex items-start gap-2">
+                                <CheckCircle className="w-3.5 h-3.5 text-green-500 flex-shrink-0 mt-0.5" />
+                                <span className="text-xs text-gray-300 line-clamp-1 leading-tight">
+                                  {benefit}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
         {/* CTA */}
         <div className="text-center mt-12">

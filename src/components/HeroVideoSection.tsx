@@ -200,7 +200,7 @@ export default function HeroVideoSection({
               lg:px-0 lg:pt-0 lg:pb-0 lg:pr-12
             "
           >
-            {/* Badge */}
+            {/* Badge
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -211,7 +211,7 @@ export default function HeroVideoSection({
                 <Sparkles className="w-4 h-4 mr-2" />
                 $50M+ Revenue Generated
               </span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Headline */}
             <motion.h1

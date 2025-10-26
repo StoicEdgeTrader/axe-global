@@ -42,57 +42,58 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           className="text-center"
         >
-          {/* Badge */}
-          <Badge variant="gradient" size="lg" className="mb-8">
-            <Sparkles className="w-5 h-5 mr-2" />
-            Ready to Scale Your Brand?
-          </Badge>
-
           {/* Main Headline */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Let's build the next{' '}
+            Ready to build the next generation of{' '}
             <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-              multi-million dollar
-            </span>{' '}
-            D2C brand together
+              D2C brands
+            </span>
+            ?
           </h2>
 
           {/* Subheadline */}
           <p className="text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join 15+ successful brands that trust AXE Global with their growth.
-            From concept to category leader - we handle everything.
+            We're launching 4-6 new brands in 2026. If you're a supplier, media partner, or service provider who wants to work with a serious operator — let's talk.
           </p>
 
           {/* Trust Indicators */}
-          <div className="flex flex-wrap justify-center gap-8 mb-12">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mb-12">
             <div className="flex items-center gap-3">
               <CheckCircle className="w-6 h-6 text-green-500" />
-              <span className="text-gray-300 text-lg">$50M+ Revenue Generated</span>
+              <span className="text-gray-300 text-lg">Backed by performance marketing veterans</span>
             </div>
             <div className="flex items-center gap-3">
               <CheckCircle className="w-6 h-6 text-green-500" />
-              <span className="text-gray-300 text-lg">250% Average ROAS</span>
+              <span className="text-gray-300 text-lg">Infrastructure built for multi-brand scale</span>
             </div>
             <div className="flex items-center gap-3">
               <CheckCircle className="w-6 h-6 text-green-500" />
-              <span className="text-gray-300 text-lg">15+ Active Brands</span>
+              <span className="text-gray-300 text-lg">Focused on profitable, sustainable growth</span>
             </div>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button variant="gradient" size="lg" className="group shadow-2xl">
-              Schedule Partnership Call
+              Get in touch
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <button className="px-8 py-4 text-lg font-semibold text-white border-2 border-white/20 rounded-lg hover:bg-white/5 hover:border-white/30 transition-all">
-              View Case Studies
-            </button>
+            <div className="relative">
+              {/* Coming Soon Badge */}
+              <div className="absolute -top-2 -right-2 z-10">
+                <span className="px-2 py-1 bg-gradient-to-r from-orange-600 to-red-600 text-white text-xs font-bold rounded-full shadow-lg">
+                  Coming Soon
+                </span>
+              </div>
+              <button className="px-8 py-4 text-lg font-semibold text-white border-2 border-white/20 rounded-lg hover:bg-white/5 hover:border-white/30 transition-all">
+                Download our Brand Deck
+              </button>
+            </div>
           </div>
 
-          {/* Small Print */}
-          <p className="text-sm text-gray-500">
-            No upfront fees • Partnership-based model • Full transparency
+          {/* Footer Note */}
+          <p className="text-sm text-gray-400">
+            🔥 Currently building our next brand launch
           </p>
         </motion.div>
       </div>
