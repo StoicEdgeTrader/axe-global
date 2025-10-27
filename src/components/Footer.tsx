@@ -2,6 +2,20 @@ import React from 'react';
 import styles from './Footer.module.css';
 
 const Footer: React.FC = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -11,43 +25,66 @@ const Footer: React.FC = () => {
           <div className={styles.footerColumn}>
             <h3 className={styles.footerLogo}>AXE Global</h3>
             <p className={styles.footerDescription}>
-              Building the next generation of performance D2C brands through proven Direct Response marketing and eCommerce infrastructure.
+            Building the next generation of performance D2C brands through proven Direct Response marketing and eCommerce infrastructure.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Company Links */}
           <div className={styles.footerColumn}>
             <h4 className={styles.columnTitle}>Company</h4>
             <ul className={styles.footerLinks}>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#brands">Our Brands</a></li>
-              <li><a href="#approach">Our Approach</a></li>
-              <li><a href="#careers">Careers</a></li>
+              <li>
+                <button onClick={() => scrollToSection('social-proof')} className={styles.linkButton}>
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('process')} className={styles.linkButton}>
+                  Our Approach
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className={styles.linkButton}>
+                  Infrastructure
+                </button>
+              </li>
+              <li className={styles.comingSoonItem}>
+                <div className={styles.comingSoonBadge}>Coming Soon</div>
+                <span className={styles.disabledLink}>Careers</span>
+              </li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Brands Links */}
           <div className={styles.footerColumn}>
-            <h4 className={styles.columnTitle}>Resources</h4>
+            <h4 className={styles.columnTitle}>Brands</h4>
             <ul className={styles.footerLinks}>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#case-studies">Case Studies</a></li>
-              <li><a href="#insights">Insights</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li className={styles.comingSoonItem}>
+                <div className={styles.comingSoonBadge}>Coming Soon</div>
+                <span className={styles.disabledLink}>Brand Portfolio</span>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('process')} className={styles.linkButton}>
+                  Launch Process
+                </button>
+              </li>
+              <li className={styles.comingSoonItem}>
+                <div className={styles.comingSoonBadge}>Coming Soon</div>
+                <span className={styles.disabledLink}>Case Studies</span>
+              </li>
             </ul>
           </div>
 
-          {/* Social & Contact */}
+          {/* Connect */}
           <div className={styles.footerColumn}>
             <h4 className={styles.columnTitle}>Connect</h4>
-            <div className={styles.socialLinks}>
-              <a href="#linkedin" className={styles.socialLink}>LinkedIn</a>
-              <a href="#twitter" className={styles.socialLink}>Twitter</a>
-              <a href="#instagram" className={styles.socialLink}>Instagram</a>
-            </div>
-            <p className={styles.contactEmail}>
-              <a href="mailto:hello@axeglobal.com">hello@axeglobal.com</a>
-            </p>
+            <ul className={styles.footerLinks}>
+              <li>
+                <a href="mailto:info@axeglobal.com" className={styles.emailLink}>
+                  Email: info@axeglobal.com
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 

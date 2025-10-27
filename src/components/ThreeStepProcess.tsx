@@ -217,7 +217,7 @@ export default function ThreeStepProcess() {
         </motion.div>
 
         {/* Main Content Container */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
           {/* Left Side - Text Content */}
           <motion.div
             key={currentStep}
@@ -225,7 +225,7 @@ export default function ThreeStepProcess() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="space-y-6 relative z-30"
           >
             {/* Step Number */}
             <div className="flex items-center gap-4">

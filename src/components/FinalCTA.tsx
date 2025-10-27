@@ -2,10 +2,16 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import { Button } from './ui/Button';
 import { Badge } from './ui/Badge';
+import { useState } from 'react';
+import ContactModal from './ContactModal';
 
 export default function FinalCTA() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <section id="contact" className="relative py-32 px-6 lg:px-12 overflow-hidden">
+    <>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <section id="contact" className="relative py-32 px-6 lg:px-12 overflow-hidden">
       {/* Background with Animated Blobs */}
       <div className="absolute inset-0 bg-black">
         {/* Gradient Blob 1 - Orange */}
@@ -74,7 +80,12 @@ export default function FinalCTA() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button variant="gradient" size="lg" className="group shadow-2xl">
+            <Button
+              variant="gradient"
+              size="lg"
+              className="group shadow-2xl"
+              onClick={() => setIsModalOpen(true)}
+            >
               Get in touch
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -93,10 +104,11 @@ export default function FinalCTA() {
 
           {/* Footer Note */}
           <p className="text-sm text-gray-400">
-            🔥 Currently building our next brand launch
+            Currently building our next brand launch
           </p>
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

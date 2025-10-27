@@ -69,6 +69,59 @@
   color: #ff6b35;
 }
 
+.linkButton {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+}
+
+.linkButton:hover {
+  color: #ff6b35;
+}
+
+.comingSoonItem {
+  position: relative;
+}
+
+.comingSoonBadge {
+  position: absolute;
+  top: -6px;
+  left: 60px;
+  background: linear-gradient(135deg, #ff6b35 0%, #ef4444 100%);
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 600;
+  padding: 1px 4px;
+  border-radius: 10px;
+  z-index: 10;
+  letter-spacing: 0.3px;
+}
+
+.disabledLink {
+  color: #4b5563;
+  font-size: 0.95rem;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.emailLink {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.emailLink:hover {
+  color: #ff6b35;
+}
+
 .socialLinks {
   display: flex;
   flex-direction: column;

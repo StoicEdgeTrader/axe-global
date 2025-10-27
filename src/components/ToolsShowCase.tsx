@@ -87,7 +87,7 @@ const TOOLS: Tool[] = [
     icon: Target,
     accentColor: "from-orange-500 to-red-500",
     image: "/images/research.jpg",
-    stat: "📊 12+ market opportunities analyzed in Q1 2025"
+    stat: "-> 12+ market opportunities analyzed in Q1 2025"
   },
   {
     id: "conversion",
