@@ -258,6 +258,20 @@ function TestimonialCarousel() {
 
 // Main Section Component
 export default function SocialProofSection() {
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="social-proof" className="relative py-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
       {/* Background with Animated Blobs */}
@@ -365,7 +379,7 @@ export default function SocialProofSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Button variant="gradient" size="lg" className="group">
+          <Button variant="gradient" size="lg" className="group" onClick={scrollToContact}>
             Partner with AXE Global
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>

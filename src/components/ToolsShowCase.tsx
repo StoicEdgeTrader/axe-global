@@ -130,6 +130,20 @@ export default function ToolsShowCase() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const activeToolData = TOOLS.find(tool => tool.id === activeTab)!;
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   // Embla Carousel for Content (Mobile)
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -453,7 +467,7 @@ export default function ToolsShowCase() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <Button variant="gradient" size="lg" className="group">
+          <Button variant="gradient" size="lg" className="group" onClick={scrollToContact}>
             Schedule a Partnership Call
           </Button>
           <p className="text-gray-400 text-sm mt-4">

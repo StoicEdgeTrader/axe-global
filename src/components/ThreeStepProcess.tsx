@@ -88,6 +88,20 @@ export default function ThreeStepProcess() {
   const [currentStep, setCurrentStep] = useState(1);
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const steps = [
     {
       id: 0,
@@ -356,7 +370,7 @@ export default function ThreeStepProcess() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <Button variant="gradient" size="lg" className="group">
+          <Button variant="gradient" size="lg" className="group" onClick={scrollToContact}>
           This is how we build brands that win
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
