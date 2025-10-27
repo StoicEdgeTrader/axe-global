@@ -8,7 +8,7 @@ function LiveCounter({ target, label }: { target: number; label: string }) {
 
   useEffect(() => {
     const duration = 2000;
-    const increment = target / (duration / 16);
+    const increment = target / (duration / 10);
     const interval = setInterval(() => {
       setCount(prev => {
         const next = prev + increment;
@@ -27,7 +27,7 @@ function LiveCounter({ target, label }: { target: number; label: string }) {
     <div className="flex items-center gap-2">
       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
       <span className="text-gray-300">
-        <span className="font-semibold text-white">{Math.floor(count).toLocaleString()}+</span> {label}
+      {label} <span className="font-semibold text-white">#{Math.floor(count).toLocaleString()}</span>
       </span>
     </div>
   );
@@ -36,10 +36,9 @@ function LiveCounter({ target, label }: { target: number; label: string }) {
 // Activity Ticker
 function ActivityTicker() {
   const activities = [
-    'New brand launched in wellness category',
-    'Partner joined our ecosystem',
-    'Campaign reached 250% ROAS',
-    'Brand scaled to $1M monthly revenue',
+    'Infrastructure built for 8-figure scale',
+'Direct Response at the core',
+'Health & Wellness focus'
   ];
 
   const [currentActivity, setCurrentActivity] = useState(0);
@@ -86,10 +85,26 @@ export default function HeroVideoSection({
     }
   }, []);
 
+
+
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
+    }
+  };
+
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -244,7 +259,7 @@ export default function HeroVideoSection({
               transition={{ delay: 0.45 }}
               className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8"
             >
-              <LiveCounter target={15} label="Active Brands" />
+              <LiveCounter target={3} label="Currently Building Brand" />
               <div className="hidden sm:block w-px h-6 bg-gray-500" />
               <ActivityTicker />
             </motion.div>
@@ -256,11 +271,17 @@ export default function HeroVideoSection({
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 mb-8"
             >
-              <button className="px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform inline-flex items-center justify-center group shadow-xl">
-                Partner with us
+              <button
+                onClick={scrollToContact}
+                className="px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform inline-flex items-center justify-center group shadow-xl"
+              >
+                Get in touch
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="px-8 py-4 border-2 border-orange-500/50 bg-gray-900/50 backdrop-blur-sm text-white rounded-lg font-semibold hover:border-orange-500 transition-colors inline-flex items-center justify-center">
+              <button
+                onClick={scrollToContact}
+                className="px-8 py-4 border-2 border-orange-500/50 bg-gray-900/50 backdrop-blur-sm text-white rounded-lg font-semibold hover:border-orange-500 transition-colors inline-flex items-center justify-center"
+              >
                 <Play className="mr-2 w-5 h-5" />
                 View Our Approach
               </button>
@@ -279,16 +300,19 @@ export default function HeroVideoSection({
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-500" />
-                250% Average ROAS
+                Industry-Leading Tools
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-500" />
-                3.5M+ Customers Served
+                Scalable Architecture
               </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
+
+      {/* Fullscreen Video Modal */}
+      
     </section>
   );
 }

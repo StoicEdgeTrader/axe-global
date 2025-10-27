@@ -35,7 +35,7 @@ const Header: React.FC = () => {
 
         {/* CTA Button */}
         <div className={styles.headerCta}>
-          <button onClick={() => scrollToSection('contact')} className={styles.ctaButton}>Partner with us</button>
+          <button onClick={() => scrollToSection('contact')} className={styles.ctaButton}>Get in touch</button>
         </div>
 
         {/* Mobile Menu Toggle (Placeholder) */}

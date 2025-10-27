@@ -165,8 +165,8 @@ function TestimonialCarousel() {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Chen",
-      role: "Li Zhang, CEO & Performance Marketing Lead",
+      name: "Li Zhang",
+      role: "CEO & Performance Marketing Lead",
       quote: "I've spent a decade scaling health brands through native advertising and Direct Response. AXE Global is the logical next step — building brands where every decision is driven by performance, and every win compounds into the next launch.",
       rating: 5,
       image: "/socialproof/1.png",
@@ -174,8 +174,8 @@ function TestimonialCarousel() {
     },
     {
       id: 2,
-      name: "Michael Torres",
-      role: "Marcus Weber, CTO & Technical Lead (Berlin)",
+      name: "Ryan Wong",
+      role: "CTO & Technical Lead",
       quote: "The best part about building our own infrastructure? We can move fast without compromise. Every system we build today becomes the foundation for the next brand — that's the power of a true portfolio approach.",
       rating: 5,
       image: "/socialproof/2.png",
@@ -183,8 +183,8 @@ function TestimonialCarousel() {
     },
     {
       id: 3,
-      name: "Emma Richards",
-      role: "Sarah Mitchell, Head of Copy & Conversion (London)",
+      name: "Mei Chen",
+      role: "Head of Copy & Conversion",
       quote: "I've written sales copy that's generated over €50M in revenue. At AXE Global, I'm applying that same framework to build brands that convert from day one — it's copywriting with skin in the game.",
       rating: 5,
       image: "/socialproof/3.png",
@@ -192,8 +192,8 @@ function TestimonialCarousel() {
     },
     {
       id: 4,
-      name: "David Kim",
-      role: "David Chen, Head of Analytics & Growth (Singapore)",
+      name: "David Chen",
+      role: "Head of Analytics & Growth",
       quote: "Data tells you what's working before your gut does. We're building AXE Global with analytics at the core — so every launch is smarter than the last, and every insight feeds the next brand.",
       rating: 5,
       image: "/socialproof/4.png",
@@ -201,8 +201,8 @@ function TestimonialCarousel() {
     },
     {
       id: 5,
-      name: "Lisa Martinez",
-      role: "Emma Richter, Head of Compliance & Operations (Vienna)",
+      name: "Emma Richter",
+      role: "Head of Compliance & Operations",
       quote: "Compliance isn't a roadblock — it's a competitive advantage. When you build it right from the start, you can scale without looking over your shoulder. That's how we're building every brand at AXE Global.",
       rating: 5,
       image: "/socialproof/5.png",
@@ -210,21 +210,12 @@ function TestimonialCarousel() {
     },
     {
       id: 6,
-      name: "James Wilson",
-      role: "Head of Product Development (Hong Kong)",
+      name: "James Park",
+      role: "Head of Product Development",
       quote: "Great products don't need tricks to sell — they need the right positioning and the right audience. I'm focused on finding products that solve real problems, because that's where sustainable D2C brands are built.",
       rating: 5,
       image: "/socialproof/6.png",
       achievement: "15 Countries"
-    },
-    {
-      id: 7,
-      name: "Alex Morgan",
-      role: "CEO, ActiveLife",
-      quote: "The strategic guidance and proven systems from AXE Global helped us achieve profitability faster than we thought possible.",
-      rating: 5,
-      image: "/socialproof/7.png",
-      achievement: "Profitable Y1"
     }
   ];
 
@@ -321,12 +312,16 @@ export default function SocialProofSection() {
         >
           <Badge variant="gradient" className="mb-4 sm:mb-6">
             <Users className="w-4 h-4 mr-2" />
-            Real Partners, Real Results
+            Building In Public
           </Badge>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-4">
-            <span className="text-white">Join</span>{' '}
-            <GradientText gradient="mixed">15+ successful brands</GradientText>
+            <span className="text-white">Real</span>{' '}
+            <GradientText gradient="mixed">brands. </GradientText>
+            <span className="text-white">Real</span>{' '}
+            <GradientText gradient="mixed">revenue. </GradientText>
+            <span className="text-white">Real</span>{' '}
+            <GradientText gradient="mixed">infrastructure. </GradientText>
           </h2>
 
           <p className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto px-4">

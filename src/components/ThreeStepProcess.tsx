@@ -95,7 +95,7 @@ export default function ThreeStepProcess() {
       title: "Validate & Research",
       subtitle: "Market research meets rapid execution",
       description: "Market demand analysis, competitive landscape mapping, and audience psychology research—we only move forward when the numbers justify the investment.",
-      image: "/mockups/1.png",
+      image: "/images/research-phase.png",
       icon: Target,
       result: "Data-Backed Go/No-Go Decision",
       features: [
@@ -115,7 +115,7 @@ export default function ThreeStepProcess() {
       title: "Build & Launch",
       subtitle: "From concept to market-ready brand",
       description: "Brand development, product sourcing, funnel creation, and compliance setup—every touchpoint optimized for conversion before we go live.",
-      image: "/mockups/2.png",
+      image: "/images/launch-phase.png",
       icon: Rocket,
       result: "Launch-Ready D2C Brand",
       features: [
@@ -135,7 +135,7 @@ export default function ThreeStepProcess() {
       title: "Scale & Optimize",
       subtitle: "Profitable growth through performance marketing",
       description: "Media buying across native, paid social, and search—combined with email automation and retention flows that maximize LTV and profitability.",
-      image: "/mockups/3.png",
+      image: "/images/growth-phase.png",
       icon: Trophy,
       result: "Profitable, Scalable Growth",
       features: [

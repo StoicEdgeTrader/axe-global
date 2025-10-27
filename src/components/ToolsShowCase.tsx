@@ -42,7 +42,7 @@ function IPhoneMockup({ tool }: { tool: Tool }) {
               }}
             >
               {/* Placeholder Gradient (visible when no image) */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${tool.accentColor} opacity-30`} />
+              {/* <div className={`absolute inset-0 bg-gradient-to-br ${tool.accentColor} opacity-30`} /> */}
 
               {/* Top reflection */}
               <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
@@ -86,7 +86,7 @@ const TOOLS: Tool[] = [
     ],
     icon: Target,
     accentColor: "from-orange-500 to-red-500",
-    image: "/mockups/1.png",
+    image: "/images/research.jpg",
     stat: "📊 12+ market opportunities analyzed in Q1 2025"
   },
   {
@@ -103,7 +103,7 @@ const TOOLS: Tool[] = [
     ],
     icon: Rocket,
     accentColor: "from-amber-500 to-orange-500",
-    image: "/mockups/2.png",
+    image: "/images/conversion.png",
     stat: "🎯 Target: 3.5%+ checkout conversion rate before scaling"
   },
   {
@@ -120,7 +120,7 @@ const TOOLS: Tool[] = [
     ],
     icon: Building2,
     accentColor: "from-red-500 to-amber-500",
-    image: "/mockups/3.png",
+    image: "/images/structure.png",
     stat: "⚡ Infrastructure capacity: Built for 8-figure annual revenue"
   }
 ];
